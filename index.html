@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Text Correcct❤️</title>
+<title>Final JPg❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -65,35 +65,21 @@ transform:translateY(30px) scale(0.95);
 pointer-events:none;
 }
 
-/* GLASS */
-.glass{
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(12px);
-padding:20px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
+/* GLASS BACKGROUND FOR ALL TEXT */
+.textGlass{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:15px 25px;
+border-radius:18px;
+margin-top:10px;
 }
 
-/* TEXT FIXES */
-/* Page 1 text → black */
-.typewriter{
-font-size:clamp(22px,6vw,34px);
-font-family:'Great Vibes',cursive;
-color:black;
-}
-
-/* Page 2 & 3 text → same font + black */
-.peachText{
-font-size:clamp(20px,5vw,30px);
-font-family:'Great Vibes',cursive;
-color:black;
-}
-
-/* Handwriting text */
-.hand{
-font-family:'Great Vibes',cursive;
-font-size:clamp(20px,6vw,32px);
-color:#fff0f5;
+/* TEXT – ALL WHITE */
+.typewriter,
+.peachText,
+.hand {
+    color:white !important;
+    font-family:'Great Vibes',cursive;
 }
 
 /* IMAGES */
@@ -102,12 +88,25 @@ max-width:75%;
 border-radius:12px;
 }
 
-/* ⭐ FINAL.JPG FIX + SMOOTH EDGES ⭐ */
+/* FINAL.JPG — FADE IN + GLOW + PERFECT SCALE */
 #page4 img {
-    width: 50vw;
+    width: min(45vw, 450px);
+    height: auto;
     max-height: 80vh;
     object-fit: contain;
-    border-radius: 20px; /* smooth edges */
+    border-radius: 24px;
+    animation: fadeIn 2s ease forwards, glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    50% { box-shadow: 0 0 30px rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
 }
 
 /* BUTTON */
@@ -187,7 +186,7 @@ font-size:12px;
 <source src="intro1.mp4">
 </video>
 
-<div id="lockBox" class="glass">
+<div id="lockBox" class="glass textGlass">
 <h2>🔐 Enter Password</h2>
 <input type="password" id="pass" placeholder="MMDD">
 <button onclick="unlock()">Unlock 💖</button>
@@ -202,7 +201,9 @@ font-size:12px;
 
 <img src="gif1.gif">
 
+<div class="textGlass">
 <h1 class="typewriter">Hi Rina,<br>I have something for you...</h1>
+</div>
 
 <button id="whatBtn" onclick="nextPage(2)">What?</button>
 </div>
@@ -216,9 +217,11 @@ font-size:12px;
 <img id="gif2" src="gif2.gif">
 <img id="gif3" src="gif3.gif" style="display:none;">
 
+<div class="textGlass">
 <h2 class="peachText">
 Can I show you something special<br>just for you?
 </h2>
+</div>
 
 <button onclick="nextPage(3)">Yes</button>
 <button onclick="noClick()" id="noBtn">No</button>
@@ -232,9 +235,11 @@ Can I show you something special<br>just for you?
 
 <img src="gif5.gif">
 
+<div class="textGlass">
 <h1 class="peachText">
 I could never forget your birthday ❤️
 </h1>
+</div>
 
 <button onclick="nextPage(4)">Blow the Candles</button>
 </div>
@@ -247,11 +252,13 @@ I could never forget your birthday ❤️
 
 <img src="final.jpg">
 
+<div class="textGlass">
 <p class="hand">
 To the girl with the prettiest smile,<br>
 Happy Birthday Rina 💖<br>
 - Shiva
 </p>
+</div>
 </div>
 
 <script>
