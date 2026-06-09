@@ -8,16 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+-webkit-tap-highlight-color: transparent;
+}
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{overflow:hidden;background:black;color:white;}
-
-/* ⭐ LOAD FUTURA FONT */
-@font-face {
-    font-family: 'Futura';
-    src: url('Futura.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+body{
+background:black;
+color:white;
+overflow:hidden;
 }
 
 /* VIDEO */
@@ -25,24 +27,22 @@ video{
 position:fixed;
 top:0;
 left:0;
-width:100vw;
-height:100vh;
+width:100%;
+height:100%;
 object-fit:cover;
-z-index:-1;
+z-index:-2;
 }
 
-/* TOP RIGHT TEXT */
-#volumeNote{
+/* OVERLAY */
+body::after{
+content:"";
 position:fixed;
-top:20px;
-right:20px;
-font-size:14px;
-opacity:0;
-animation:fadeIn 4s forwards;
-}
-
-@keyframes fadeIn{
-to{opacity:1;}
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+z-index:-1;
 }
 
 /* PAGE */
@@ -54,115 +54,108 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-transition:1s;
-}
-
-.hidden{opacity:0;pointer-events:none;}
-
-/* ZOOM EFFECT */
-.zoom{
-animation:zoomInOut 2s ease;
-}
-
-@keyframes zoomInOut{
-0%{transform:scale(1.2);}
-50%{transform:scale(1);}
-100%{transform:scale(1.05);}
-}
-
-/* PASSWORD BOX */
-#lockBox{
-opacity:0;
-transition:6s;
 text-align:center;
-background:rgba(0,0,0,0.4);
+padding:20px;
+transition:0.8s ease;
+}
+
+.hidden{
+opacity:0;
+transform:translateY(30px) scale(0.95);
+pointer-events:none;
+}
+
+/* GLASS */
+.glass{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(12px);
 padding:20px;
 border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
-input{
-padding:10px;
-border-radius:20px;
-border:none;
-margin-top:10px;
-}
-
-/* ⭐ TYPEWRITER TEXT — FUTURA */
+/* TEXT */
 .typewriter{
-overflow:hidden;
-white-space:nowrap;
-border-right:2px solid;
-animation:typing 6s steps(50,end);
-font-size:48px;
-text-align:center;
-margin-top:-40px;
-
-font-family:'Futura', sans-serif;
-color:#2b1a1a;
+font-size:clamp(22px,6vw,34px);
+font-family:'Great Vibes',cursive;
+color:#ffe4ec;
 }
 
-@keyframes typing{
-from{width:0}
-to{width:100%}
+.peachText{
+font-size:clamp(20px,5vw,30px);
+color:#ffe4ec;
+}
+
+.hand{
+font-family:'Great Vibes',cursive;
+font-size:clamp(20px,6vw,32px);
+color:#fff0f5;
+}
+
+/* IMAGES */
+img{
+max-width:75%;
+border-radius:12px;
 }
 
 /* BUTTON */
 button{
-padding:12px 25px;
-border-radius:30px;
+padding:14px 24px;
 border:none;
-background:linear-gradient(45deg,#ffd700,#ffb6c1);
-cursor:pointer;
+border-radius:30px;
+background:linear-gradient(45deg,#ffd700,#ff9ec4);
+color:black;
+font-weight:bold;
 margin-top:15px;
+font-size:16px;
+transition:0.25s;
 }
 
-/* WHAT BUTTON */
+button:active{
+transform:scale(0.9);
+box-shadow:0 0 20px gold;
+}
+
+/* GLOW */
 #whatBtn{
-margin-top:20px;
-font-size:22px;
-animation:glow 1.5s infinite alternate;
+animation:pulse 1.5s infinite;
 }
 
-@keyframes glow{
-0%{box-shadow:0 0 5px #ffb6c1;}
-100%{box-shadow:0 0 20px #ffd700;}
+@keyframes pulse{
+0%{box-shadow:0 0 5px pink;}
+50%{box-shadow:0 0 25px gold;}
+100%{box-shadow:0 0 5px pink;}
 }
 
-/* GIF1 */
-#gif1{
-width:250px;
-opacity:0;
-transition:opacity 3s;
-margin-bottom:30px;
-}
-
-/* ⭐ PAGE TEXT — FUTURA */
-.peachText{
-font-family:'Futura', sans-serif;
-font-size:42px;
+/* INPUT */
+input{
+width:100%;
+padding:12px;
+border-radius:20px;
+border:none;
+margin-top:10px;
 text-align:center;
 }
 
-/* ⭐ PAGE 4 FIX */
-#page4{
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
+/* HEARTS */
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:floatUp 6s linear infinite;
 }
 
-#page4 img{
-max-height:60vh;
-width:auto;
-border-radius:10px;
-margin-bottom:20px;
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+100%{transform:translateY(-110vh);opacity:1;}
 }
 
-.hand{
-font-family:'Great Vibes', cursive;
-font-size:32px;
-line-height:1.4;
+/* NOTE */
+#volumeNote{
+position:fixed;
+top:10px;
+right:10px;
+font-size:12px;
 }
 
 </style>
@@ -170,192 +163,137 @@ line-height:1.4;
 
 <body>
 
-<div id="volumeNote">🔊 Please turn up volume</div>
+<div id="volumeNote">🔊 Turn on sound</div>
 
 <audio id="music" loop>
 <source src="music.mp3">
 </audio>
 
-<!-- 🔐 PAGE 0 -->
-<div id="page0" class="page zoom">
-
-<video id="intro1" autoplay muted playsinline>
+<!-- PAGE 0 -->
+<div id="page0" class="page">
+<video autoplay muted playsinline>
 <source src="intro1.mp4">
 </video>
 
-<div id="lockBox">
-<h2>Enter Password</h2>
-<p>(Password:MMDD)</p>
-<input type="password" id="pass">
-<br>
-<button onclick="unlock()">Enter</button>
+<div id="lockBox" class="glass">
+<h2>🔐 Enter Password</h2>
+<input type="password" id="pass" placeholder="MMDD">
+<button onclick="unlock()">Unlock 💖</button>
+</div>
 </div>
 
-</div>
-
-<!-- 💖 PAGE 1 -->
-<div id="page1" class="page hidden zoom">
-
-<video id="intro2" muted playsinline>
+<!-- PAGE 1 -->
+<div id="page1" class="page hidden">
+<video muted playsinline id="v2">
 <source src="intro2.mp4">
 </video>
 
-<img id="gif1" src="gif1.gif">
+<img src="gif1.gif">
 
 <h1 class="typewriter">Hi Rina,<br>I have something for you...</h1>
 
 <button id="whatBtn" onclick="nextPage(2)">What?</button>
-
 </div>
 
-<!-- 💝 PAGE 2 -->
+<!-- PAGE 2 -->
 <div id="page2" class="page hidden">
-
-<video id="intro3" muted playsinline>
+<video muted playsinline id="v3">
 <source src="intro3.mp4">
 </video>
 
 <img id="gif2" src="gif2.gif">
 <img id="gif3" src="gif3.gif" style="display:none;">
 
-<h2 class="peachText" style="color:black;">
-Can I show you something special that I made <br>
-just for you...?
+<h2 class="peachText">
+Can I show you something special<br>just for you?
 </h2>
 
 <button onclick="nextPage(3)">Yes</button>
 <button onclick="noClick()" id="noBtn">No</button>
-
 </div>
 
-<!-- 🎂 PAGE 3 -->
+<!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-
-<video id="intro4" muted playsinline>
+<video muted playsinline id="v4">
 <source src="intro4.mp4">
 </video>
 
 <img src="gif5.gif">
 
-<h1 class="peachText" style="color:black;">
-I could never forget your birthday, Rina
+<h1 class="peachText">
+I could never forget your birthday ❤️
 </h1>
 
-<button onclick="goPage4()">Blow the Candles</button>
+<button onclick="nextPage(4)">Blow the Candles</button>
 </div>
 
-<!-- 💌 PAGE 4 -->
+<!-- PAGE 4 -->
 <div id="page4" class="page hidden">
-
-<video id="intro5" muted playsinline>
+<video muted playsinline id="v5">
 <source src="intro5.mp4">
 </video>
 
 <img src="final.jpg">
 
-<p class="hand" style="color:black;">
+<p class="hand">
 To the girl with the prettiest smile,<br>
-Happy Birthday Rina :- Shiva♥️
+Happy Birthday Rina 💖<br>
+- Shiva
 </p>
-
 </div>
 
 <script>
 
-/* FREEZE INTRO1 */
-let v1=document.getElementById("intro1");
-v1.onended=()=>v1.pause();
-
-/* FADE PASSWORD */
-setTimeout(()=>{
-document.getElementById("lockBox").style.opacity=1;
-},1000);
-
-/* FREEZE INTRO2 */
-let v2=document.getElementById("intro2");
-v2.onended=()=>v2.pause();
-
-/* FREEZE INTRO3 */
-let v3=document.getElementById("intro3");
-v3.onended=()=>v3.pause();
-
-/* FREEZE INTRO4 */
-let v4=document.getElementById("intro4");
-v4.onended=()=>v4.pause();
-
-/* FREEZE INTRO5 */
-let v5=document.getElementById("intro5");
-v5.onended=()=>v5.pause();
-
-/* UNLOCK */
+/* PASSWORD */
 function unlock(){
 let p=document.getElementById("pass").value;
 
 if(p==="0612"){
-
 document.getElementById("page0").classList.add("hidden");
-
 document.getElementById("music").play();
-
 showPage(1);
-
-v2.currentTime = 0;
-v2.play();
-
 }else{
-alert("correct password is :0612");
+alert("Wrong password 😝");
 }
 }
 
 /* PAGE SWITCH */
 function showPage(n){
-    document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-    document.getElementById("page"+n).classList.remove("hidden");
+document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
 
-    /* PAGE 1 GIF fade-in */
-    if(n === 1){
-        setTimeout(()=>{
-            document.getElementById("gif1").style.opacity = 1;
-        }, 500);
-    }
+setTimeout(()=>{
+document.getElementById("page"+n).classList.remove("hidden");
+},200);
 
-    /* PAGE 2 — start intro3 */
-    if(n === 2){
-        v3.currentTime = 0;
-        v3.play();
-    }
-
-    /* PAGE 3 — start intro4 */
-    if(n === 3){
-        v4.currentTime = 0;
-        v4.play();
-    }
-
-    /* PAGE 4 — start intro5 */
-    if(n === 4){
-        v5.currentTime = 0;
-        v5.play();
-    }
+/* play videos */
+if(n===1){document.getElementById("v2").play();}
+if(n===2){document.getElementById("v3").play();}
+if(n===3){document.getElementById("v4").play();}
+if(n===4){document.getElementById("v5").play();}
 }
 
-/* NEXT */
 function nextPage(n){
 showPage(n);
-document.getElementById("music").play();
 }
 
 /* NO BUTTON */
 function noClick(){
 document.getElementById("gif2").style.display="none";
 document.getElementById("gif3").style.display="block";
-document.querySelector("#page2 h2").innerText="Aww... please open it !";
+document.querySelector("#page2 h2").innerText="Aww please say yes 🥺";
 document.getElementById("noBtn").style.display="none";
 }
 
-/* ⭐ GO TO PAGE 4 */
-function goPage4(){
-showPage(4);
-}
+/* HEARTS */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"%";
+h.style.fontSize=(16+Math.random()*20)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},500);
 
 </script>
 
