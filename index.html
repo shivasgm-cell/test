@@ -41,7 +41,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.20);
+background:rgba(0,0,0,0);
 z-index:-1;
 }
 
@@ -68,7 +68,7 @@ pointer-events:none;
 /* GLASS BACKGROUND FOR ALL TEXT */
 .textGlass{
 background:rgba(255,255,255,0.15);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(5px);
 padding:15px 25px;
 border-radius:18px;
 margin-top:10px;
@@ -78,21 +78,25 @@ margin-top:10px;
 .typewriter,
 .peachText,
 .hand {
-    color:white !important;
+    color:black !important;
     font-family:'Great Vibes',cursive;
+}
+
+    #page4 .hand {
+    font-size: clamp(24px, 6.5vw, 36px); /* slightly bigger on mobile + laptop */
 }
 
 /* IMAGES */
 img{
 max-width:75%;
-border-radius:12px;
+border-radius:px;
 }
 
     /* Romantic fade‑up effect */
 .fadeUp {
     opacity: 0;
     transform: translateY(25px);
-    animation: fadeUp 2.2s ease forwards;
+    animation: fadeUp 2.4s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -115,11 +119,11 @@ border-radius:12px;
 #page4 img {
     width: min(420px, 70vw);   /* perfect portrait size */
     height: auto;
-    max-height: 70vh;
+    max-height: 60vh;
     object-fit: contain;       /* prevents zoom/crop */
-    border-radius: 30px;       /* smooth rounded edges */
+    border-radius: 28px;       /* smooth rounded edges */
     box-shadow: 0 0 35px rgba(255,255,255,0.35); /* soft glow */
-    animation: fadeIn 1.8s ease forwards, glowPulse 3s ease-in-out infinite;
+    animation: fadeIn 2.4s ease forwards, glowPulse 3s ease-in-out infinite;
 }
 
 /* Fade-in animation */
@@ -323,16 +327,6 @@ document.querySelector("#page2 h2").innerText="Come on...please say yes 🥺";
 document.getElementById("noBtn").style.display="none";
 }
 
-/* HEARTS */
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"%";
-h.style.fontSize=(16+Math.random()*20)+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},500);
 
 </script>
 
