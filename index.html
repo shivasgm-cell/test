@@ -41,7 +41,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.20);
 z-index:-1;
 }
 
@@ -88,13 +88,36 @@ max-width:75%;
 border-radius:12px;
 }
 
+    /* Romantic fade‑up effect */
+.fadeUp {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp 2.2s ease forwards;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 /* ⭐ FINAL.JPG — MATCH IMAGE 1 STYLE ⭐ */
 #page4 img {
     width: min(420px, 70vw);   /* perfect portrait size */
     height: auto;
-    max-height: 85vh;
+    max-height: 70vh;
     object-fit: contain;       /* prevents zoom/crop */
-    border-radius: 28px;       /* smooth rounded edges */
+    border-radius: 30px;       /* smooth rounded edges */
     box-shadow: 0 0 35px rgba(255,255,255,0.35); /* soft glow */
     animation: fadeIn 1.8s ease forwards, glowPulse 3s ease-in-out infinite;
 }
@@ -151,13 +174,7 @@ margin-top:10px;
 text-align:center;
 }
 
-/* HEARTS */
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:floatUp 6s linear infinite;
-}
+
 
 @keyframes floatUp{
 0%{transform:translateY(0);opacity:0;}
@@ -177,7 +194,7 @@ font-size:12px;
 
 <body>
 
-<div id="volumeNote">🔊 Turn on sound</div>
+<div id="volumeNote">🔊 Please Turn ON Sound</div>
 
 <audio id="music" loop>
 <source src="music.mp3">
@@ -222,7 +239,7 @@ font-size:12px;
 
 <div class="textGlass">
 <h2 class="peachText">
-Can I show you something special<br>just for you?
+Can I show you something special<br>I made just for you?
 </h2>
 </div>
 
@@ -255,12 +272,12 @@ I could never forget your birthday ❤️
 
 <img src="final.jpg">
 
-<div class="textGlass">
-<p class="hand">
-To the girl with the prettiest smile,<br>
-Happy Birthday Rina 💖<br>
-- Shiva
+<p class="hand fadeUp">
+    To the girl with the prettiest smile,<br>
+    Happy Birthday Rina 💖<br>
+    - Shiva
 </p>
+
 </div>
 </div>
 
@@ -275,7 +292,7 @@ document.getElementById("page0").classList.add("hidden");
 document.getElementById("music").play();
 showPage(1);
 }else{
-alert("Wrong password 😝");
+alert("Wrong password😝");
 }
 }
 
@@ -302,7 +319,7 @@ showPage(n);
 function noClick(){
 document.getElementById("gif2").style.display="none";
 document.getElementById("gif3").style.display="block";
-document.querySelector("#page2 h2").innerText="Aww please say yes 🥺";
+document.querySelector("#page2 h2").innerText="Come on...please say yes 🥺";
 document.getElementById("noBtn").style.display="none";
 }
 
